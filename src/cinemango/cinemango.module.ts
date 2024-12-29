@@ -14,6 +14,7 @@ import { Cinemango, CinemangoSchema } from './entities/cinemango.entity';
         schema: CinemangoSchema
       }
     ])
-  ]
+  ],
+  exports: [MongooseModule]
 })
 export class CinemangoModule {}

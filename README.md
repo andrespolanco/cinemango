@@ -21,10 +21,11 @@ docker compose up -d
 5. Levantar el proyecto en local
 ```
 npm run start:dev
-```
-ó
-```
 yarn start:dev
+```
+6. Reconstruir la BD con la semilla
+```
+GET localhost:3000/api/seed
 ```
 ## Stack usado
 * MongoDB
