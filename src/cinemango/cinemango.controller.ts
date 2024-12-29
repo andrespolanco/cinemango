@@ -1,8 +1,9 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query } from '@nestjs/common';
 import { CinemangoService } from './cinemango.service';
 import { CreateCinemangoDto } from './dto/create-cinemango.dto';
 import { UpdateCinemangoDto } from './dto/update-cinemango.dto';
 import { ParseMongoIdPipe } from 'src/common/pipes/parse-mongo-id.pipe';
+import { PaginationDto } from 'src/common/dto/pagination.dto';
 
 @Controller('cinemango')
 export class CinemangoController {
@@ -14,8 +15,8 @@ export class CinemangoController {
   }
 
   @Get()
-  findAll() {
-    return this.cinemangoService.findAll();
+  findAll( @Query() paginationDto: PaginationDto) {
+    return this.cinemangoService.findAll(paginationDto);
   }
 
   @Get(':id')

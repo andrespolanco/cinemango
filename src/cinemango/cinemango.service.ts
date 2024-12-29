@@ -5,6 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 import { CreateCinemangoDto } from './dto/create-cinemango.dto';
 import { UpdateCinemangoDto } from './dto/update-cinemango.dto';
+import { PaginationDto } from '../common/dto/pagination.dto';
 
 @Injectable()
 export class CinemangoService {
@@ -24,8 +25,13 @@ export class CinemangoService {
     }
   }
 
-  findAll() {
-    return this.cinemangoModel.find();
+  findAll(paginationDto: PaginationDto){
+    const { limit=10, page=1 } = paginationDto;
+    return this.cinemangoModel.find()
+    .limit(limit)
+    .skip(page)
+    .sort({ lanzamiento: 'desc' })
+    .select('-__v');
   }
 
   async findOne(id: string) {
