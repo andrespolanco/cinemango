@@ -25,6 +25,7 @@ export class CinemangoService {
   }
 
   findAll() {
+    return this.cinemangoModel.find();
   }
 
   async findOne(id: string) {
@@ -71,7 +72,7 @@ export class CinemangoService {
     //forma con 1 llamado a la bd
     const {deletedCount} = await this.cinemangoModel.deleteOne({ _id: id });
     if (deletedCount === 0) 
-      throw new NotFoundException(`La pelicula con el id ${id} no existe`);;
+      throw new NotFoundException(`La pelicula con el id ${id} no existe`);
     return;
   }
 

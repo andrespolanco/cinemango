@@ -19,7 +19,7 @@ export class SeedService {
   async executeSeed() {
     await this.cinemangoModel.deleteMany({});
 
-    const { data } = await this.axios.get<PelisPopularesResponse>('https://api.themoviedb.org/3/movie/popular?language=es-ES&page=1', {
+    const { data } = await this.axios.get<PelisPopularesResponse>('https://api.themoviedb.org/3/movie/popular?language=es-ES', {
       headers: {
       Authorization: `Bearer ${this.apiKey}`,
       accept: 'application/json'
