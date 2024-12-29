@@ -18,6 +18,14 @@ npm i -g @nestjs/cli
 ```
 docker compose up -d
 ```
+5. Levantar el proyecto en local
+```
+npm run start:dev
+```
+ó
+```
+yarn start:dev
+```
 ## Stack usado
 * MongoDB
 * NestJS
