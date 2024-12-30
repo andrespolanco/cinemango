@@ -39,12 +39,12 @@ export class CinemangoService {
 
     //busqueda por nro
     if(!isNaN(Number(id))){
-      cinemango = await this.cinemangoModel.findOne({nro: id});
+      cinemango = await this.cinemangoModel.findOne({nro: id}).select('-__v');
     }
 
     //busqueda por mongoid
     if (!cinemango && isValidObjectId(id)) {
-      cinemango = await this.cinemangoModel.findById(id);
+      cinemango = await this.cinemangoModel.findById(id).select('-__v');
     }
 
     //busqueda por titulo
