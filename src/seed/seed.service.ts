@@ -9,7 +9,6 @@ import { Model } from 'mongoose';
 export class SeedService {
 
   private readonly axios: AxiosInstance = axios;
-  private readonly apiKey = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2ZWY5ZjE0MTMxZmQ0Mzk1NGRlNDA0NmM1OWNjMTI5OSIsIm5iZiI6MTYxMzY4OTE5OC41MDcsInN1YiI6IjYwMmVmMTZlZWZlMzdjMDA0MWJjN2IxYiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.tcW6RBPcxtXgn5NppqhUgPUWb2MJffGzy3BXDY721jg';
 
   constructor(
       @InjectModel(Cinemango.name)
@@ -21,7 +20,7 @@ export class SeedService {
 
     const { data } = await this.axios.get<PelisPopularesResponse>('https://api.themoviedb.org/3/movie/popular?language=es-ES', {
       headers: {
-      Authorization: `Bearer ${this.apiKey}`,
+      Authorization: `Bearer ${process.env.API_KEY}`,
       accept: 'application/json'
       }
     });
